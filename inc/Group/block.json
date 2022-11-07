@@ -1,0 +1,23 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "bigbite/flex-grid",
+  "title": "Flex Grid",
+  "description": "A container for Flexbox or CSS grid items",
+  "category": "design",
+  "icon": "grid",
+  "keywords": ["Flex", "Flexbox", "Grid"],
+  "attributes": {
+    "display": {
+      "type": "string",
+      "default": "flex"
+    }
+  },
+  "supports": {
+    "alignWide": true,
+    "align": true
+  },
+  "providesContext": {
+    "bigbite/flex-grid/display": "display"
+  }
+}

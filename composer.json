@@ -1,0 +1,43 @@
+{
+  "name": "bigbite/flex-grid",
+  "description": "",
+  "type": "wordpress-plugin",
+  "version": "1.1.7-rc.1",
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@github.com:bigbite/phpcs-config.git"
+    }
+  ],
+  "require": {
+    "automattic/vipwpcs": "^2.3",
+    "squizlabs/php_codesniffer": "*"
+  },
+  "require-dev": {
+    "automattic/jetpack-autoloader": "2.10.1",
+    "bigbite/phpcs-config": "^1.1"
+  },
+  "autoload": {
+    "files": [
+      "inc/setup.php",
+      "inc/utils.php",
+      "inc/asset-settings.php",
+      "inc/Group/group-render.php",
+      "inc/Item/item-render.php"
+    ],
+    "psr-4": {
+      "Big_Bite\\Flex_Grid\\": "inc/"
+    },
+    "classmap": [
+      "inc/"
+    ]
+  },
+  "scripts": {},
+  "config": {
+    "preferred-install": "dist",
+    "allow-plugins": {
+      "automattic/jetpack-autoloader": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  }
+}

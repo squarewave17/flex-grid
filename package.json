@@ -1,0 +1,18 @@
+{
+    "name": "@bigbite/block-flex-grid",
+    "description": "",
+    "version": "0.0.1",
+    "author": "Big Bite",
+    "prettier": "@bigbite/build-tools/configs/prettier",
+    "scripts": {
+        "build": "build-tools build --once",
+        "build:watch": "build-tools build"
+    },
+    "dependencies": {
+        "classnames": "^2.3.1",
+        "prop-types": "^15.7.0"
+    },
+    "devDependencies": {
+        "@bigbite/build-tools": "^1.0.0-rc.6"
+    }
+}
