@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Controls from './controls';
 import { NAMESPACE } from '../../settings';
 
-const { InnerBlocks, useBlockProps } = wp.blockEditor;
+const { useInnerBlocksProps, useBlockProps } = wp.blockEditor;
 
 /**
  * The edit component for a group that is used to wrap items.
@@ -12,24 +12,22 @@ const { InnerBlocks, useBlockProps } = wp.blockEditor;
  * @param {object} props Collection of properties required.
  * @param {string[]} props.attributes List of values.
  * @param {setter} props.setAttributes Function to update attributes on change.
+ * @param {string} props.clientId Id of the block being assigned.
  * @returns
  */
 const Edit = ({ attributes, setAttributes }) => {
   const { display } = attributes;
   const ALLOWED_BLOCKS = [`${NAMESPACE}-item`];
-  const TEMPLATE = [[`${NAMESPACE}-item`]];
+  // const TEMPLATE = [[`${NAMESPACE}-item`]];
   const blockProps = useBlockProps();
+  const innerBlocksProps = useInnerBlocksProps(blockProps, {
+    allowedBlocks: [ALLOWED_BLOCKS],
+  });
 
   return (
     <>
       <Controls attributes={attributes} setAttributes={setAttributes} />
-      <div {...blockProps} style={{ display }}>
-        <InnerBlocks
-          allowedBlocks={ALLOWED_BLOCKS}
-          template={TEMPLATE}
-          renderAppender={InnerBlocks.ButtonBlockAppender}
-        />
-      </div>
+      <div {...innerBlocksProps} style={{ display }} />
     </>
   );
 };

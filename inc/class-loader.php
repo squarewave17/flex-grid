@@ -58,7 +58,7 @@ class Loader
     {
         $plugin_name = basename(BIG_BITE_BLOCK_FLEX_GRID_DIR);
         wp_enqueue_script(
-            self::STYLE_NAME,
+            self::FRONTEND_SCRIPT_NAME,
             plugins_url($plugin_name . '/dist/scripts/' . BLOCK_FLEX_GRID_FRONTEND_JS),
             [],
             filemtime(BIG_BITE_BLOCK_FLEX_GRID_DIR . '/dist/scripts/' . BLOCK_FLEX_GRID_FRONTEND_JS),
@@ -66,7 +66,7 @@ class Loader
         );
 
         wp_enqueue_style(
-            self::STYLE_NAME,
+            self::FRONTEND_STYLE_NAME,
             plugins_url($plugin_name . '/dist/styles/' . BLOCK_FLEX_GRID_FRONTEND_CSS),
             [],
             filemtime(BIG_BITE_BLOCK_FLEX_GRID_DIR . '/dist/styles/' . BLOCK_FLEX_GRID_FRONTEND_CSS)
@@ -81,7 +81,7 @@ class Loader
     public function register_bb_block_flex_grid(): void
     {
         register_block_type(
-            __DIR__ . 'Group/block.json',
+            __DIR__ . '/Group/block.json',
             [
                 'render_callback' => 'bigbite_render_flex_grid_group_block',
                 'skip_inner_blocks' => false
@@ -89,7 +89,7 @@ class Loader
         );
 
         register_block_type(
-            __DIR__ . 'Item/block.json',
+            __DIR__ . '/Item/block.json',
             [
                 'render_callback' => 'bigbite_render_flex_grid_item_block',
                 'skip_inner_blocks' => false

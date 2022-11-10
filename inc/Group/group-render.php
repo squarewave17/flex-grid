@@ -12,14 +12,13 @@ function bigbite_render_flex_grid_group_block($attributes, $content)
     include plugin_dir_path(__DIR__) . 'allowed-tags-args.php';
     $display = $attributes['display'];
 
-    $wrapper_class = get_block_wrapper_attributes(); // Define this before if statement to avoid invalid argument error.
+    $extra = [
+        'style' => 'display: ' . $display . ';',
+    ];
 
-    if ($display) {
-        $extra = [
-            'class' => $display,
-        ];
-        $wrapper_class = get_block_wrapper_attributes($extra);
-    }
+    $wrapper_class = get_block_wrapper_attributes($extra); // Define this before if statement to avoid invalid argument error.
+
+
 
 
     ob_start();

@@ -33,9 +33,9 @@ const Controls = ({ attributes, setAttributes }) => {
   return (
     <>
       <InspectorControls>
-        <PanelBody title={__('Settings', 'flex-grid')}>
+        <PanelBody title={__('Mode', 'flex-grid')}>
           <ToggleGroupControl
-            label="Display"
+            label="Layout Type"
             isBlock="true"
             value={display}
             onChange={onChangeLayout}

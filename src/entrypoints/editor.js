@@ -6,7 +6,7 @@ import itemMetadata from '../../inc/Item/block.json';
 import '../editor/styles/editor-styles.scss';
 
 const { registerBlockType } = wp.blocks;
-const { InnerBlocks } = wp.blockEditor;
+const { InnerBlocks, useInnerBlocksProps } = wp.blockEditor;
 
 wp.domReady(() => {
   registerBlockType(groupMetadata, {
@@ -16,12 +16,8 @@ wp.domReady(() => {
      * @returns Rendered innerblock.
      */
     save() {
-      return <InnerBlocks.Content />;
-    },
-    example: {
-      attributes: {
-        summaryBorderWidth: '1px',
-      },
+      const innerBlocksProps = useInnerBlocksProps.save();
+      return { ...innerBlocksProps.children };
     },
   });
 

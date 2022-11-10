@@ -18,6 +18,7 @@ function bigbite_render_flex_grid_item_block($attributes, $content, $block)
 	$wrapper_class = get_block_wrapper_attributes();
 
 
+
 	ob_start();
 	printf(
 		'<div %s>%s</div>',

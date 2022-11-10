@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-props-no-spreading */
+const { InnerBlocks, useBlockProps } = wp.blockEditor;
 /**
  * The edit component for an item that is added to the accordion group.
  *
@@ -10,5 +12,12 @@
  * @param {string} props.clientId Id of the block being assigned.
  * @returns
  */
-const Edit = () => <div>Hello</div>;
+const Edit = () => {
+  const blockProps = useBlockProps();
+  return (
+    <div {...blockProps} className="test-item">
+      <InnerBlocks renderAppender={InnerBlocks.ButtonBlockAppender} />
+    </div>
+  );
+};
 export default Edit;
