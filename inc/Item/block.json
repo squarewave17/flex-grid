@@ -6,7 +6,7 @@
   "parent": ["bigbite/flex-grid"],
   "description": "A flexbox or CSS Grid item container",
   "category": "design",
-  "icon": "aspectRatio",
+  "icon": "tagcloud",
   "keywords": ["Flex Item"],
   "attributes": {
     "itemType": {

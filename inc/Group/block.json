@@ -5,7 +5,7 @@
   "title": "Flex Grid",
   "description": "A container for Flexbox or CSS grid items",
   "category": "design",
-  "icon": "grid",
+  "icon": "grid-view",
   "keywords": ["Flex", "Flexbox", "Grid"],
   "attributes": {
     "display": {

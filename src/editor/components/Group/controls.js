@@ -28,7 +28,6 @@ const Controls = ({ attributes, setAttributes }) => {
    */
   const onChangeLayout = (newDisplay) => {
     setAttributes({ display: newDisplay });
-    console.log(newDisplay);
   };
 
   return (

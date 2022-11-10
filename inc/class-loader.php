@@ -35,18 +35,18 @@ class Loader
 
         wp_enqueue_script(
             self::SCRIPT_NAME,
-            plugins_url($plugin_name . '/dist/scripts' . BLOCK_FLEX_GRID_EDITOR_JS,),
+            plugins_url($plugin_name . '/dist/scripts/' . BLOCK_FLEX_GRID_EDITOR_JS,),
             ['wp-blocks', 'wp-i18n', 'wp-element', 'wp-plugins', 'wp-edit-post'],
             filemtime(BIG_BITE_BLOCK_FLEX_GRID_DIR . '/dist/scripts/' . BLOCK_FLEX_GRID_EDITOR_JS),
             BLOCK_FLEX_GRID_VERSION
         );
 
-        // wp_enqueue_style(
-        //     self::STYLE_NAME,
-        //     plugins_url($plugin_name . '/dist/styles/' . BLOCK_FLEX_GRID_CSS),
-        //     [],
-        //     filemtime(BIG_BITE_FLEX_GRID_DIR . '/dist/styles/' . BLOCK_FLEX_GRID_EDITOR_CSS)
-        // );
+        wp_enqueue_style(
+            self::STYLE_NAME,
+            plugins_url($plugin_name . '/dist/styles/' . BLOCK_FLEX_GRID_EDITOR_CSS),
+            [],
+            filemtime(BIG_BITE_BLOCK_FLEX_GRID_DIR . '/dist/styles/' . BLOCK_FLEX_GRID_EDITOR_CSS)
+        );
     }
 
     /**

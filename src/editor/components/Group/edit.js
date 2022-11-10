@@ -23,7 +23,7 @@ const Edit = ({ attributes, setAttributes }) => {
   return (
     <>
       <Controls attributes={attributes} setAttributes={setAttributes} />
-      <div {...blockProps} style={`display: ${display}`}>
+      <div {...blockProps} style={{ display }}>
         <InnerBlocks
           allowedBlocks={ALLOWED_BLOCKS}
           template={TEMPLATE}
