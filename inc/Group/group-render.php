@@ -10,10 +10,22 @@
 function bigbite_render_flex_grid_group_block($attributes, $content)
 {
     include plugin_dir_path(__DIR__) . 'allowed-tags-args.php';
+    include_once plugin_dir_path(__DIR__) . 'utils.php';
     $display = $attributes['display'];
+    $flexDirection = $attributes['flexDirection'];
+    $flexDirectionReverse = $attributes['flexDirectionReverse'];
+    $alignItems = $attributes['alignItems'];
+
+    $inline_styles = constructStyles(
+        [
+            'display' => $display,
+            'flex-direction' => constructConditionalStyle($flexDirection, $flexDirectionReverse, '-reverse'),
+            'align-items' => $alignItems
+        ]
+    );
 
     $extra = [
-        'style' => 'display: ' . $display . ';',
+        'style' => $inline_styles,
     ];
 
     $wrapper_class = get_block_wrapper_attributes($extra); // Define this before if statement to avoid invalid argument error.

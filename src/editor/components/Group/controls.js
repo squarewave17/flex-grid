@@ -1,11 +1,17 @@
 import PropTypes from 'prop-types';
-// import { I18N_DOMAIN } from '../../settings';
+import { I18N_DOMAIN } from '../../settings';
 
-const { PanelBody, __experimentalToggleGroupControl, __experimentalToggleGroupControlOption } =
-  wp.components;
+const {
+  PanelBody,
+  PanelRow,
+  Button,
+  ButtonGroup,
+  CheckboxControl,
+  __experimentalVStack: VStack,
+  __experimentalToggleGroupControl: ToggleGroupControl,
+  __experimentalToggleGroupControlOption: ToggleGroupControlOption,
+} = wp.components;
 
-const ToggleGroupControl = __experimentalToggleGroupControl;
-const ToggleGroupControlOption = __experimentalToggleGroupControlOption;
 const { __ } = wp.i18n;
 const { InspectorControls } = wp.blockEditor;
 
@@ -19,34 +25,135 @@ const { InspectorControls } = wp.blockEditor;
  * @returns
  */
 const Controls = ({ attributes, setAttributes }) => {
-  const { display } = attributes;
+  const { display, flexDirection, flexDirectionReverse, alignItems } = attributes;
+
+  /**
+   * Function to check if button should be selected.
+   * @param {string} value
+   * @returns {boolean}
+   */
+  const checkSelect = (value, target) => value === target;
+
   /**
    * Set The Display Type
    *
-   * @param {string[]} display List of values.
+   * @param {string[]} display
    * @returns
    */
   const onChangeLayout = (newDisplay) => {
     setAttributes({ display: newDisplay });
   };
+  /**
+   * Set The Flex Direction
+   *
+   * @param {string[]} newFlexDirection
+   * @returns
+   */
+  const onChangeDirection = (newFlexDirection) => {
+    setAttributes({ flexDirection: newFlexDirection });
+  };
+  /**
+   * Set The Flex Direction Reverse Prop
+   *
+   * @param {boolean} onChangeDirectionRev
+   * @returns
+   */
+  const onChangeDirectionRev = (newFlexDirectionReverse) => {
+    setAttributes({ flexDirectionReverse: newFlexDirectionReverse });
+  };
+  /**
+   * Set The align-items prop
+   *
+   * @param {string} display
+   * @returns
+   */
+  const onChangeAlignItems = (newAlignItems) => {
+    setAttributes({ alignItems: newAlignItems });
+  };
 
   return (
     <>
       <InspectorControls>
-        <PanelBody title={__('Mode', 'flex-grid')}>
+        <PanelBody title={__('Mode', I18N_DOMAIN)}>
           <ToggleGroupControl
             label="Layout Type"
             isBlock="true"
             value={display}
             onChange={onChangeLayout}
           >
-            <ToggleGroupControlOption value="flex" label="Flex">
-              Flex
-            </ToggleGroupControlOption>
-            <ToggleGroupControlOption value="grid" label="Grid">
-              Grid
-            </ToggleGroupControlOption>
+            <ToggleGroupControlOption value="flex" label="Flex" />
+            <ToggleGroupControlOption value="inline-flex" label="Inline" />
+            <ToggleGroupControlOption value="grid" label="Grid" />
           </ToggleGroupControl>
+        </PanelBody>
+        <PanelBody title={__('Container Settings', I18N_DOMAIN)}>
+          <PanelRow>
+            <VStack>
+              <ToggleGroupControl
+                label="Flex Direction"
+                isBlock="true"
+                value={flexDirection}
+                onChange={onChangeDirection}
+              >
+                <ToggleGroupControlOption value="row" label="Row" />
+                <ToggleGroupControlOption value="column" label="Column" />
+              </ToggleGroupControl>
+              <CheckboxControl
+                label="Reverse"
+                checked={flexDirectionReverse}
+                onChange={onChangeDirectionRev}
+              />
+            </VStack>
+          </PanelRow>
+          <PanelRow label="Horizontal Alignment">
+            <VStack>
+              <p>Align Items</p>
+              <ButtonGroup>
+                <Button
+                  icon="editor-justify"
+                  isPressed={checkSelect('flex-start', alignItems)}
+                  onClick={() => onChangeAlignItems('flex-start')}
+                />
+                <Button
+                  icon="editor-justify"
+                  isPressed={checkSelect('center', alignItems)}
+                  onClick={() => onChangeAlignItems('center')}
+                />
+                <Button
+                  icon="editor-justify"
+                  isPressed={checkSelect('flex-end', alignItems)}
+                  onClick={() => onChangeAlignItems('flex-end')}
+                />
+                <Button
+                  icon="editor-justify"
+                  isPressed={checkSelect('stretch', alignItems)}
+                  onClick={() => onChangeAlignItems('stretch')}
+                />
+              </ButtonGroup>
+              <p>Justify Content</p>
+              <ButtonGroup>
+                <Button icon="editor-justify" onClick={console.log('clicked')} />
+                <Button icon="editor-justify" onClick={console.log('clicked')} />
+                <Button icon="editor-justify" onClick={console.log('clicked')} />
+                <Button icon="editor-justify" onClick={console.log('clicked')} />
+                <Button icon="editor-justify" onClick={console.log('clicked')} />
+              </ButtonGroup>
+              <p>Align Content</p>
+              <ButtonGroup>
+                <Button icon="editor-justify" help="text" onClick={console.log('clicked')} />
+                <Button icon="editor-justify" onClick={console.log('clicked')} />
+                <Button icon="editor-justify" onClick={console.log('clicked')} />
+                <Button icon="editor-justify" onClick={console.log('clicked')} />
+                <Button icon="editor-justify" onClick={console.log('clicked')} />
+              </ButtonGroup>
+              <p>Flex Wrap</p>
+              <ButtonGroup>
+                <Button icon="editor-justify" onClick={console.log('clicked')} />
+                <Button icon="editor-justify" onClick={console.log('clicked')} />
+                <Button icon="editor-justify" onClick={console.log('clicked')} />
+              </ButtonGroup>
+            </VStack>
+          </PanelRow>
         </PanelBody>
       </InspectorControls>
     </>

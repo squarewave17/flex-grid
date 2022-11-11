@@ -11,6 +11,18 @@
     "display": {
       "type": "string",
       "default": "flex"
+    },
+    "flexDirection": {
+      "type": "string",
+      "default": "row"
+    },
+    "flexDirectionReverse": {
+      "type": "boolean",
+      "default": false
+    },
+    "alignItems": {
+      "type": "string",
+      "default": "stretch"
     }
   },
   "supports": {
