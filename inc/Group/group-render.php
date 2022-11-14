@@ -15,12 +15,14 @@ function bigbite_render_flex_grid_group_block($attributes, $content)
     $flexDirection = $attributes['flexDirection'];
     $flexDirectionReverse = $attributes['flexDirectionReverse'];
     $alignItems = $attributes['alignItems'];
+    $justifyContent = $attributes['justifyContent'];
 
     $inline_styles = constructStyles(
         [
             'display' => $display,
             'flex-direction' => constructConditionalStyle($flexDirection, $flexDirectionReverse, '-reverse'),
-            'align-items' => $alignItems
+            'align-items' => $alignItems,
+            'jusify-content' => $justifyContent
         ]
     );
 

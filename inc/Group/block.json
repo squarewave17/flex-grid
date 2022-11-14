@@ -23,6 +23,10 @@
     "alignItems": {
       "type": "string",
       "default": "stretch"
+    },
+    "justifyContent": {
+      "type": "string",
+      "default": "stretch"
     }
   },
   "supports": {

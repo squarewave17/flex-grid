@@ -25,7 +25,7 @@ const { InspectorControls } = wp.blockEditor;
  * @returns
  */
 const Controls = ({ attributes, setAttributes }) => {
-  const { display, flexDirection, flexDirectionReverse, alignItems } = attributes;
+  const { display, flexDirection, flexDirectionReverse, alignItems, justifyContent } = attributes;
 
   /**
    * Function to check if button should be selected.
@@ -64,7 +64,16 @@ const Controls = ({ attributes, setAttributes }) => {
   /**
    * Set The align-items prop
    *
-   * @param {string} display
+   * @param {string} onChangeJustifyContent
+   * @returns
+   */
+  const onChangeJustifyContent = (newJustifyContent) => {
+    setAttributes({ justifyContent: newJustifyContent });
+  };
+  /**
+   * Set The justify-content prop
+   *
+   * @param {string} onChangeAlignItems
    * @returns
    */
   const onChangeAlignItems = (newAlignItems) => {
@@ -132,11 +141,36 @@ const Controls = ({ attributes, setAttributes }) => {
               </ButtonGroup>
               <p>Justify Content</p>
               <ButtonGroup>
-                <Button icon="editor-justify" onClick={console.log('clicked')} />
-                <Button icon="editor-justify" onClick={console.log('clicked')} />
-                <Button icon="editor-justify" onClick={console.log('clicked')} />
-                <Button icon="editor-justify" onClick={console.log('clicked')} />
-                <Button icon="editor-justify" onClick={console.log('clicked')} />
+                <Button
+                  icon="editor-justify"
+                  isPressed={checkSelect('flex-start', justifyContent)}
+                  onClick={() => onChangeJustifyContent('flex-start')}
+                />
+                <Button
+                  icon="editor-justify"
+                  isPressed={checkSelect('center', justifyContent)}
+                  onClick={() => onChangeJustifyContent('center')}
+                />
+                <Button
+                  icon="editor-justify"
+                  isPressed={checkSelect('flex-end', justifyContent)}
+                  onClick={() => onChangeJustifyContent('flex-end')}
+                />
+                <Button
+                  icon="editor-justify"
+                  isPressed={checkSelect('space-around', justifyContent)}
+                  onClick={() => onChangeJustifyContent('space-around')}
+                />
+                <Button
+                  icon="editor-justify"
+                  isPressed={checkSelect('space-between', justifyContent)}
+                  onClick={() => onChangeJustifyContent('space-between')}
+                />
+                <Button
+                  icon="editor-justify"
+                  isPressed={checkSelect('stretch', justifyContent)}
+                  onClick={() => onChangeJustifyContent('stretch')}
+                />
               </ButtonGroup>
               <p>Align Content</p>
               <ButtonGroup>

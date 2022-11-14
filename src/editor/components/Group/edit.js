@@ -16,7 +16,7 @@ const { useInnerBlocksProps, useBlockProps } = wp.blockEditor;
  * @returns
  */
 const Edit = ({ attributes, setAttributes }) => {
-  const { display, flexDirection, flexDirectionReverse, alignItems } = attributes;
+  const { display, flexDirection, flexDirectionReverse, alignItems, justifyContent } = attributes;
   const ALLOWED_BLOCKS = [`${NAMESPACE}-item`];
   // const TEMPLATE = [[`${NAMESPACE}-item`]];
   const blockProps = useBlockProps();
@@ -28,6 +28,7 @@ const Edit = ({ attributes, setAttributes }) => {
     display,
     flexDirection: `${flexDirection}${flexDirectionReverse ? '-reverse' : ''}`,
     alignItems,
+    justifyContent,
   };
 
   return (
